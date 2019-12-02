@@ -7,6 +7,7 @@ pipeline {
   }
   environment {
     DEPLOY_NAMESPACE = "default"
+    VERSION = "1.0.0-$BUILD_NUMBER"
   }
   stages {
   
@@ -17,7 +18,7 @@ pipeline {
 		 sh 'ls -lart && mvn -B clean deploy'
 		 sh 'chmod u+x *.sh && ./nexus.sh'
 		 sh 'mv *.jar ../'
-		 sleep 120
+		 //sleep 120
 			}
         }
       }
@@ -33,6 +34,21 @@ pipeline {
 
       }
     }
+	
+	 stage('Push Docker') {
+		steps{
+			script {
+				container('jx-base') {
+				
+					sh 'mount -o remount,rw /home/jenkins/.docker'
+					sh 'scp ${WORKSPACE}/config.json /home/jenkins/.docker/'
+					sh 'docker push dhanapodigiri/poclistener:$VERSION'	
+				}
+			
+			}
+		}
+	}
+   
     
    
   }

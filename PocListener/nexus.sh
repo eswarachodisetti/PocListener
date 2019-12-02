@@ -1,19 +1,19 @@
 #Define the Snapshot repository
 #Define the groupId
-groupID=com/TestWebservice
+groupID=com/poclistener
 #Define the aryifactId
-artifactId=TestWebservice
+artifactId=poclistener
 #Define the extension
 extension=war
 #Define the tarname
 reponame=0.0.1-SNAPSHOT
 #get the input from jenkins
-artifact=$1
+artifact=0.0.1-SNAPSHOT
 #extract the revision from the input
 #revision=`echo $artifact | grep -o '[0-9:]*'`
 echo $revision
 #Declare the nexus repository path
-path=http://nexus.jx.35.229.61.119.nip.io/repository/maven-snapshots/com/TestWebservice/TestWebservice/0.0.1-SNAPSHOT/
+path=http://nexus.jx.35.229.61.119.nip.io/repository/maven-snapshots/com/poclistener/poclistener/0.0.1-SNAPSHOT/
 #fetch the latest version that is available in nexus from the metadata file
 version=`curl -s $path/maven-metadata.xml |  grep $revision | sed "s/.*<version>\([^<]*\)<\/version>.*/\1/"`
 echo $version
@@ -25,4 +25,4 @@ value=`curl -s $path/$version/maven-metadata.xml | grep '<value>' | head -1 | se
 echo $value
 #Set the build files location
 #Download the artifact to build files path from Nexus Repository
-wget -O TestWebservice-0.0.1-SNAPSHOT.war  http://nexus.jx.35.229.61.119.nip.io/repository/maven-snapshots/${groupID}/${artifactid}/${reponame}/${version}/${artifactid}-${value}.${extension}
+wget -O poclistener-0.0.1-SNAPSHOT.war  http://nexus.jx.35.229.61.119.nip.io/repository/maven-snapshots/${groupID}/${artifactid}/${reponame}/${version}/${artifactid}-${value}.${extension}

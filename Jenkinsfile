@@ -6,7 +6,7 @@ pipeline {
     label "jenkins-maven"
   }
   environment {
-    DEPLOY_NAMESPACE = "default"
+    DEPLOY_NAMESPACE = "jx-staging"
     VERSION = "1.0.0-$BUILD_NUMBER"
   }
   stages {
@@ -48,6 +48,16 @@ pipeline {
 			}
 		}
 	}
+	
+	 stage('Deployment') {
+      steps {
+        container('maven') {
+          dir('poclistener') {
+            sh 'jx step helm apply --name poclistener'
+				}
+			}
+		}
+		}
    
     
    

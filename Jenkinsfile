@@ -38,7 +38,7 @@ pipeline {
 	 stage('Push Docker') {
 		steps{
 			script {
-				container('jx-base') {
+				container('maven') {
 				
 					sh 'mount -o remount,rw /home/jenkins/.docker'
 					sh 'scp ${WORKSPACE}/config.json /home/jenkins/.docker/'

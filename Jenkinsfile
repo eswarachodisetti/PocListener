@@ -23,6 +23,7 @@ pipeline {
 		
 		// sh 'mvn dependency:get -DremoteRepositories=http://nexus.jx.35.229.61.119.nip.io/repository/maven-snapshots -DgroupId=com.TestWebservice -DartifactId=TestWebservice -Dversion=0.0.1-SNAPSHOT -Dpackaging=war -Dtransitive=false'
 		 sh 'ls -lart && mvn -B clean deploy'
+		 sh 'chmod u+x *.sh && ./nexus.sh'
 		 sleep 120
 			}
         }

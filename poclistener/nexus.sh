@@ -25,4 +25,4 @@ value=`curl -s $path/$version/maven-metadata.xml | grep '<value>' | head -1 | se
 echo $value
 #Set the build files location
 #Download the artifact to build files path from Nexus Repository
-wget -O poclistener-0.0.1-SNAPSHOT.jar  http://nexus.jx.35.229.61.119.nip.io/repository/maven-snapshots/${groupID}/${artifactid}/${reponame}/${version}/${artifactid}-${value}.${extension}
+wget -O poclistener.jar  http://nexus.jx.35.229.61.119.nip.io/repository/maven-snapshots/${groupID}/${artifactid}/${reponame}/${version}/${artifactid}-${value}.${extension}

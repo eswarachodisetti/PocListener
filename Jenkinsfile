@@ -12,7 +12,7 @@ pipeline {
      stage('Build') {
       steps {
         container('maven') {
-         dir('PocListener') {
+         dir('poclistener') {
 		// sh 'rm -rf *'
 		 //checkout scm
 		 

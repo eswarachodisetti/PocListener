@@ -21,7 +21,7 @@ pipeline {
      stage('Build') {
       steps {
         container('maven') {
-         dir('$APPLICATION') {
+         dir("$APPLICATION") {
 		 sh 'ls -lart && mvn -B clean deploy'
 		 sh 'chmod u+x *.sh && ./nexus.sh $GROUP_ID $ARTIFACT_ID $MAVEN_VERSION $EXTENTION'
 		 sh 'mv *.jar ../'
@@ -58,7 +58,7 @@ pipeline {
 	 stage('Deployment') {
       steps {
         container('maven') {
-          dir('$APPLICATION') {
+          dir("$APPLICATION") {
 				sh 'jx step helm apply $APPLICATION --name $APPLICATION --namespace=$DEPLOY_NAMESPACE'
 				}
 			}

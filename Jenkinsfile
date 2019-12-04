@@ -10,7 +10,7 @@ pipeline {
     VERSION = "1.0.0-$BUILD_NUMBER"
   }
   stages {
-/*  
+  
      stage('Build') {
       steps {
         container('maven') {
@@ -48,7 +48,7 @@ pipeline {
 			}
 		}
 	}
-*/	
+	
 	 stage('Deployment') {
       steps {
         container('maven') {

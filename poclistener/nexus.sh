@@ -20,4 +20,4 @@ value=`curl -s $path/maven-metadata.xml | grep '<value>' | head -1 | sed "s/.*<v
 echo $value
 #Set the build files location
 #Download the artifact to build files path from Nexus Repository
-wget -O poclistener.jar  $path/${artifactId}-${value}.${extension}
+wget -O ${artifactId}.${extension}  $path/${artifactId}-${value}.${extension}

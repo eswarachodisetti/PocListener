@@ -4,7 +4,7 @@ groupID=$1
 #Define the aryifactId
 artifactId=$2
 #Define the version
-version=$4
+version=$3
 #Define the extension
 extension=$4
 

@@ -1,8 +1,8 @@
 #Define the Snapshot repository
 #Define the groupId
-groupID=com/poclistener
+groupID=$1
 #Define the aryifactId
-artifactId=poclistener
+artifactId=$2
 #Define the extension
 extension=jar
 #Define the tarname

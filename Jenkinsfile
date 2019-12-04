@@ -13,6 +13,7 @@ pipeline {
     ARTIFACT_ID = "poclistener"
     MAVEN_VERSION = "0.0.1-SNAPSHOT"
     EXTENTION = "jar"
+	DOCKER_HUB_REPO = "dhanapodigiri"
     
   }
   stages {
@@ -20,7 +21,7 @@ pipeline {
      stage('Build') {
       steps {
         container('maven') {
-         dir('poclistener') {
+         dir('$APPLICATION') {
 		 sh 'ls -lart && mvn -B clean deploy'
 		 sh 'chmod u+x *.sh && ./nexus.sh $GROUP_ID $ARTIFACT_ID $MAVEN_VERSION $EXTENTION'
 		 sh 'mv *.jar ../'
@@ -32,7 +33,7 @@ pipeline {
 	stage('Build Docker') {
       steps {
         container('maven') {
-          sh 'docker build -t dhanapodigiri/poclistener:$VERSION .'
+          sh 'docker build -t $DOCKER_HUB_REPO/$APPLICATION:$VERSION .'
 		      sh 'docker images'
 	
         }
@@ -47,7 +48,7 @@ pipeline {
 				
 					sh 'mount -o remount,rw /home/jenkins/.docker'
 					sh 'scp ${WORKSPACE}/config.json /home/jenkins/.docker/'
-					sh 'docker push dhanapodigiri/poclistener:$VERSION'	
+					sh 'docker push $DOCKER_HUB_REPO/$APPLICATION:$VERSION'	
 				}
 			
 			}
@@ -57,16 +58,12 @@ pipeline {
 	 stage('Deployment') {
       steps {
         container('maven') {
-          dir('poclistener') {
-        //    sh 'jx step helm apply --name poclistener'
+          dir('$APPLICATION') {
 				sh 'jx step helm apply $APPLICATION --name $APPLICATION --namespace=$DEPLOY_NAMESPACE'
 				}
 			}
 		}
-		}
-
-   
-    
+		}  
    
   }
 }

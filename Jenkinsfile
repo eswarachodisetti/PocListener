@@ -10,6 +10,9 @@ pipeline {
     VERSION = "1.0.0-$BUILD_NUMBER"
     GROUP_ID = "com/poclistener"
     ARTIFACT_ID = "poclistener"
+    MAVEN_VERSION = "0.0.1-SNAPSHOT"
+    EXTENTION = "jar"
+    
   }
   stages {
   
@@ -18,7 +21,7 @@ pipeline {
         container('maven') {
          dir('poclistener') {
 		// sh 'ls -lart && mvn -B clean deploy'
-		 sh 'chmod u+x *.sh && ./nexus.sh $GROUP_ID $ARTIFACT_ID'
+		 sh 'chmod u+x *.sh && ./nexus.sh $GROUP_ID $ARTIFACT_ID $MAVEN_VERSION $EXTENTION'
 		// sh 'mv *.jar ../'
 		// sleep 100
 			}

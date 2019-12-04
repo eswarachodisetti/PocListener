@@ -53,7 +53,8 @@ pipeline {
       steps {
         container('maven') {
           dir('poclistener') {
-            sh 'jx step helm apply --name poclistener'
+        //    sh 'jx step helm apply --name poclistener'
+	sh 'jx step helm apply poclistener --name poclistener --namespace=jx-production'
 				}
 			}
 		}

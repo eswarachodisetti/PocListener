@@ -6,7 +6,7 @@ replicaCount: 1
 
 image:
   repository: dhanapodigiri/poclistener 
-  tag: "lts"
+  tag: "stable"
   pullPolicy: Always
 
 imagePullSecrets: []

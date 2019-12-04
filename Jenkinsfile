@@ -8,6 +8,8 @@ pipeline {
   environment {
     DEPLOY_NAMESPACE = "jx-staging"
     VERSION = "1.0.0-$BUILD_NUMBER"
+    GROUP_ID = "com/poclistener"
+    ARTIFACT_ID = "poclistener"
   }
   stages {
   
@@ -16,9 +18,9 @@ pipeline {
         container('maven') {
          dir('poclistener') {
 		// sh 'ls -lart && mvn -B clean deploy'
-		 sh 'chmod u+x *.sh && ./nexus.sh'
+		 sh 'chmod u+x *.sh && ./nexus.sh $GROUP_ID $ARTIFACT_ID'
 		// sh 'mv *.jar ../'
-		 sleep 100
+		// sleep 100
 			}
         }
       }

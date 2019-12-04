@@ -6,7 +6,8 @@ pipeline {
     label "jenkins-maven"
   }
   environment {
-    DEPLOY_NAMESPACE = "jx-staging"
+    APPLICATION = "poclistener"
+    DEPLOY_NAMESPACE = "jx-production"
     VERSION = "1.0.0-$BUILD_NUMBER"
     GROUP_ID = "com/poclistener"
     ARTIFACT_ID = "poclistener"
@@ -20,15 +21,14 @@ pipeline {
       steps {
         container('maven') {
          dir('poclistener') {
-		// sh 'ls -lart && mvn -B clean deploy'
+		 sh 'ls -lart && mvn -B clean deploy'
 		 sh 'chmod u+x *.sh && ./nexus.sh $GROUP_ID $ARTIFACT_ID $MAVEN_VERSION $EXTENTION'
-		// sh 'mv *.jar ../'
-		// sleep 100
+		 sh 'mv *.jar ../'
 			}
         }
       }
     }
-/*
+
 	stage('Build Docker') {
       steps {
         container('maven') {
@@ -59,12 +59,12 @@ pipeline {
         container('maven') {
           dir('poclistener') {
         //    sh 'jx step helm apply --name poclistener'
-				sh 'jx step helm apply poclistener --name poclistener --namespace=jx-production'
+				sh 'jx step helm apply $APPLICATION --name $APPLICATION --namespace=$DEPLOY_NAMESPACE'
 				}
 			}
 		}
 		}
-*/
+
    
     
    

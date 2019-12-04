@@ -15,15 +15,15 @@ pipeline {
       steps {
         container('maven') {
          dir('poclistener') {
-		 sh 'ls -lart && mvn -B clean deploy'
+		// sh 'ls -lart && mvn -B clean deploy'
 		 sh 'chmod u+x *.sh && ./nexus.sh'
-		 sh 'mv *.jar ../'
-		 //sleep 120
+		// sh 'mv *.jar ../'
+		 sleep 100
 			}
         }
       }
     }
-
+/*
 	stage('Build Docker') {
       steps {
         container('maven') {
@@ -54,11 +54,12 @@ pipeline {
         container('maven') {
           dir('poclistener') {
         //    sh 'jx step helm apply --name poclistener'
-	sh 'jx step helm apply poclistener --name poclistener --namespace=jx-production'
+				sh 'jx step helm apply poclistener --name poclistener --namespace=jx-production'
 				}
 			}
 		}
 		}
+*/
    
     
    

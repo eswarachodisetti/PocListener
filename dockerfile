@@ -1,4 +1,4 @@
-FROM  store/oracle/serverjre:8
+FROM  java:8
 RUN mkdir library
 COPY /library /library
 COPY invoke.sh . 

@@ -18,7 +18,7 @@ pipeline {
   }
   stages {
   
-     stage('Build') {
+ /*    stage('Build') {
       steps {
         container('maven') {
          dir("$APPLICATION") {
@@ -54,12 +54,12 @@ pipeline {
 			}
 		}
 	}
-	
+	*/
 	 stage('Deployment') {
       steps {
         container('maven') {
           dir("$APPLICATION") {
-		  		sh 'kubectl -n $DEPLOY_NAMESPACE scale deployment $APPLICATION --replicas=0'
+		  	//	sh 'kubectl -n $DEPLOY_NAMESPACE scale deployment $APPLICATION --replicas=0'
 		 		 sleep 5
 				sh 'jx step helm apply $APPLICATION --name $APPLICATION --namespace=$DEPLOY_NAMESPACE'
 		  		//sh 'kubectl apply -f kuberneteslistener.yml -n $DEPLOY_NAMESPACE'

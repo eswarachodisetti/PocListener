@@ -5,7 +5,7 @@ metadata:
 spec:
  containers:
   - name: poclistener1
-    image: dhanapodigiri/poclistener:1.0.0.2
+    image: dhanapodigiri/poclistener:1.0.0-53
     imagePullPolicy: Always
     ports:
      - containerPort: 6379

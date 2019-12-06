@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
        - name: poclistener
-         image: dhanapodigiri/poclistener:1.0.0-67
+         image: dhanapodigiri/poclistener:latest
          ports:
          - containerPort: 8081
          imagePullPolicy: Always

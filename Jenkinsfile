@@ -7,7 +7,7 @@ pipeline {
   }
   environment {
     APPLICATION = "poclistener"
-    DEPLOY_NAMESPACE = "jx-production"
+    DEPLOY_NAMESPACE = "default"
     VERSION = "1.0.0-$BUILD_NUMBER"
     GROUP_ID = "com/poclistener"
     ARTIFACT_ID = "poclistener"

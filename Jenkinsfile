@@ -18,7 +18,7 @@ pipeline {
   }
   stages {
   
- /*    stage('Build') {
+     stage('Build') {
       steps {
         container('maven') {
          dir("$APPLICATION") {
@@ -54,7 +54,7 @@ pipeline {
 			}
 		}
 	}
-	*/
+	
 	 stage('Deployment') {
       steps {
         container('maven') {

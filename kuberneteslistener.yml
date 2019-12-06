@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: poclistenerdhana
+spec:
+ containers:
+  - name: poclistener1
+    image: dhanapodigiri/poclistener:1.0.0.2
+    imagePullPolicy: Always
+    ports:
+     - containerPort: 6379

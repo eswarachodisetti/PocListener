@@ -17,7 +17,7 @@ pipeline {
     
   }
   stages {
-  
+  /*
      stage('Build') {
       steps {
         container('maven') {
@@ -54,7 +54,7 @@ pipeline {
 			}
 		}
 	}
-	
+*/	
 	 stage('Deployment') {
       steps {
         container('maven') {

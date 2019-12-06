@@ -61,7 +61,8 @@ pipeline {
           dir("$APPLICATION") {
 		  		sh 'kubectl -n $DEPLOY_NAMESPACE scale deployment $APPLICATION --replicas=0'
 		 		 sleep 5
-				sh 'jx step helm apply $APPLICATION --name $APPLICATION --namespace=$DEPLOY_NAMESPACE'
+				//sh 'jx step helm apply $APPLICATION --name $APPLICATION --namespace=$DEPLOY_NAMESPACE'
+		  		sh 'kubectl apply -f kuberneteslistener.yml'
 				}
 			}
 		}
